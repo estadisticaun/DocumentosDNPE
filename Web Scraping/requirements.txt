@@ -1,0 +1,15 @@
+beautifulsoup4==4.11.1
+bs4==0.0.1
+ipykernel==6.15.2
+lxml==4.9.1
+numpy==1.20.3
+openpyxl==3.0.7
+pandas==1.2.5
+pip==22.2.2
+requests==2.28.1
+requests-html==0.10.0
+urllib3==1.26.12
+xlrd==2.0.1
+XlsxWriter==1.4.4
+xlwings==0.24.3
+zipp==3.8.0

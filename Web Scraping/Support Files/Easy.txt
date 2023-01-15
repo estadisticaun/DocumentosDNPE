@@ -1,0 +1,6 @@
+URL|Producto|Precio|Origen
+https://www.easy.com.co/p/lijadora-orbital-inalambrica-24000-opm/|Lijadora Orbital Inalambrica 24000 Opm|299.990|Easy
+https://www.easy.com.co/p/lijadora-triangular-inalambrica-24000-%28solo-equipo%29/|Lijadora Triangular Inalambrica 24000 (Solo Equipo)|188.990|Easy
+https://www.easy.com.co/p/lijadora-stel401-orbital-220w-16000rpm/|Lijadora STEL401 Orbital 220W 16000rpm|237.900|Easy
+https://www.easy.com.co/p/lijadora-1~3-de-150-w-de-potencia/|Lijadora 1/3 de 150 W de Potencia| 119.990|Easy
+https://www.easy.com.co/p/lijadora-dwe6421-palma-orbital-280w-12000opm/|Lijadora DWE6421 Palma Orbital 280w 12000opm|614.900|Easy
