@@ -12,7 +12,7 @@ ___
 
 ### :wrench: Instalación :battery:
 
-Para la correcta ejecución del [Jupyter Notebook]() que contiene las clases para cada una de las páginas (*Easy, Home Center, Mercado Libre, AliExpress*) a las que se realiza el rastreo se debe contar con [Python]( https://www.python.org/downloads/) (*preferiblemente una versión* `>= 3.8`) y algún administrador de paquetes como [conda](https://docs.conda.io/en/latest/miniconda.html).
+Para la correcta ejecución del [Jupyter Notebook](https://github.com/estadisticaun/DocumentosDNPE/blob/main/Web%20Scraping/Code/WebScraping.ipynb) que contiene las clases para cada una de las páginas (*Easy, Home Center, Mercado Libre, AliExpress*) a las que se realiza el rastreo se debe contar con [Python]( https://www.python.org/downloads/) (*preferiblemente una versión* `>= 3.8`) y algún administrador de paquetes como [conda](https://docs.conda.io/en/latest/miniconda.html).
 
 Una vez se cuenta con ello, basta con instalar los paquetes usados en el proyecto, teniendo presente siempre apuntar al archivo de `requirements.txt` (*en la ruta en donde dejo el proyecto clonado*). Siguiendo un esqueleto como el siguiente:
 
