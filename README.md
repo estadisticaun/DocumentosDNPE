@@ -30,7 +30,7 @@ Tenga en cuenta que cada clase goza de ciertas peculiaridades (*pues cada págin
   - :clipboard: `path` es el parámetro con el que se buscará los productos en la categoría a la que pertenece, omita el prefijo `Inicio >`, conserve los espacios tal como quedan al pegar el texto directamente, y tenga presente que no es sensible a mayúsculas o minúsculas (*no se preocupe por eso* :sunglasses:).
 
 - **WebScrapingHomeCenter()**
-  - :arrow_up_small: Siga las mismas indicaciones/recomendaciones que arriba, pero tenga presente que para Home Center la categoría **NO** define la URL, por lo tanto, se es necesario de un archivo con las rutas (`CategoriesList_HomeCenter.pkl`), sin él (*o lo sí lo mueve de ubicación*) no se ejecutará el raspado web.
+  - :arrow_up_small: Siga las mismas indicaciones/recomendaciones que arriba, pero tenga presente que para Home Center la categoría **NO** define la URL, por lo tanto, se es necesario de un archivo con las rutas (`CategoriesList_HomeCenter.pkl`), sin él (*o sí lo mueve de ubicación*) no se ejecutará el raspado web.
   - :eyes: Este pendiente de la consola, quizás se esté esperando una respuesta (*introducir algún valor*), no tiene necesidad de modificar manualmente el archivo con rutas, la clase se preocupa por todos los posibles escenarios :muscle:.
 
 - **WebScrapingMercadoLibre()**
