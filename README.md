@@ -6,6 +6,8 @@ El siguiente repositorio tiene como fin consolidar aquellos proyectos que se enc
 
 Acá encontrará unos slides en donde se explica a groso modo el proceso de instalación desde 0 de Shiny Server usando una máquina virtual (`VirtualBox-6.1.36`) y el SO `CentOS-7-Minimal`. Dentro de las diapositivas hallará todos los enlaces, comandos y documentación necesaria para logra dicha instalación.
 
+Adicionalmente encontrará una guía para la instalación de `R` y todo lo necesario para la correcta ejecución del paquete `UnalR` desde la distribución de Linux `Ubuntu 18.04.6 LTS`. Lo anterior, lo puede consultar de forma detallada en el siguiente [markdown]( https://github.com/estadisticaun/DocumentosDNPE/blob/main/Shiny%20Server/Install%20R%20with%20Ubuntu.md).
+
 ___
 
 ## :dart: Web Scraping :arrows_counterclockwise:
