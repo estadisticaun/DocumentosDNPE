@@ -160,7 +160,7 @@ sudo su - -c "R -e \"install.packages('sf')\""
 
 > Durante la ejecución de los comandos, anteriormente mencionados, puede que le aparezca el siguiente error, ¡no se preocupe! la solución es no ejecutar más peticiones de R por 6 horas :watch: (*para instalar dependencias*), es decir, **no use** la consola por 6 horas para instalar paquetes desde GitHub.
 
-> A nosotros nos pasó :sleepy:, por lo que si ha llegado a esta línea espere 6 horas para ejecutar las siguientes líneas en la guía :hourglass_flowing_sand:.
+> A nosotros nos pasó :sleepy:, por lo que sí ha llegado a esta línea espere 6 horas para ejecutar las siguientes líneas en la guía :hourglass_flowing_sand:.
 
 ```
 User_Name@ubuntu:~$ sudo usermod -a -G staff User_Name
@@ -233,4 +233,111 @@ sudo apt install libcurl4-openssl-dev
 sudo apt libbz2-dev liblzma-dev
 sudo apt-get install libharfbuzz-dev libfribidi-dev
 sudo su - -c "R -e \"install.packages('devtools')\""
+```
+
+___
+## :file_folder: *Instalación de `UnalData`* :books:
+
+> :closed_lock_with_key: Para la instalación de este paquete, es necesario que cuente con el `auth_token`, pues este es un paquete privado y no liberado al público, reemplaza dicho valor cuando más adelante aparezca `YOUR_ACCESS_TOKEN` :key:.
+
+:red_circle: Tenga en cuenta adicionalmente que al tratar de instalar el paquete le puede aparecer el siguiente error:
+
+```
+> remotes::install_github("estadisticaun/UnalData", auth_token = "YOUR_ACCESS_TOKEN")
+Downloading GitHub repo estadisticaun/UnalData@HEAD
+── R CMD build ────────────────────────────────────────────────────────────────
+   checking for file '/tmp/RtmpOyprV6/remotes86c3ddc43f2/estadisticaun-UnalData✔  checking for file '/tmp/RtmpOyprV6/remotes86c3ddc43f2/estadisticaun-UnalData-5fdfb68e9e876725599041db37cc6b635caaa20e/DESCRIPTION'
+─  preparing 'UnalData':
+✔  checking DESCRIPTION meta-information ...
+─  checking for LF line-endings in source and make files and shell scripts
+─  checking for empty or unneeded directories
+─  building 'UnalData_0.0.0.9000.tar.gz'
+
+Installing package into '/home/jeisonalarcon/R/x86_64-pc-linux-gnu-library/4.2'
+(as 'lib' is unspecified)
+* installing *source* package 'UnalData' ...
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+Killed
+Warning message:
+In i.p(...) :
+  installation of package '/tmp/RtmpOyprV6/file86c7ee9c25d/UnalData_0.0.0.9000.tar.gz' had non-zero exit status
+```
+
+Cuando aparezca el error sin mayor detalle categorizado como `Killed` es debido a problemas de memoria :anger:. Más específicamente hace pensar que el proceso fue eliminado por un supervisor de proceso (*por ejemplo, un `out-of-memory killer`*), ¿eso quiere decir que el paquete es demasiado pesado? No y sí, es decir, comparado con otros paquetes si es pesado.
+
+* :mag: El siguiente comando analiza el tamaño de algunos de los paquetes más usados y conocidos, ahí vemos que si bien el paquete `UnalData` es el más pesado de los comparados no llega a un tamaño extraordinario en GB.
+
+```
+sudo R
+
+  system.file("DESCRIPTION", package = "UnalData") |>
+    dirname() |> fs::dir_info(all = TRUE, recurse = TRUE) |>
+    getElement("size") |> sum()
+  q()
+```
+
+Obteniendo como salida del código anterior:
+
+|   Paquete    | Tamaño (MG)  |
+|:-----------: |:-----------: |
+|   UnalData   |     77.5     |
+|    plotly    |     6.45     |
+|    UnalR     |     5.18     |
+|   ggplot2    |     4.97     |
+|   leaflet    |     4.16     |
+| highcharter  |     2.98     |
+|  tidyverse   |    0.609     |
+
+Por lo tanto, asegúrese de contar con un espacio de memoria normal y una memoria RAM considerable, pues la descompresión de los datos sí consume gran cantidad de recursos. Utilice el siguiente comando de `R` para observar el estado de uso de memoria, núcleos y celdas utilizados en la sesión `gc()`.
+
+:floppy_disk: Todo lo anterior para garantizar que la máquina no tenga limitaciones de memoria y que la instalación del paquete cuente con la RAM necesaria al ser usado :vhs:.
+
+:large_blue_circle: Una vez asegurado que se cumpla con los requisitos mínimos y que no hay restricciones por parte del sistema, otro de los posibles errores que le puede surgir es el siguiente:
+
+```
+> remotes::install_github("estadisticaun/UnalData", auth_token = "YOUR_ACCESS_TOKEN")
+Downloading GitHub repo estadisticaun/UnalData@HEAD
+── R CMD build ────────────────────────────────────────────────────────────────
+   checking for file '/tmp/RtmpreVX5T/remotes9b77d7d9a43/estadisticaun-UnalData✔  checking for file '/tmp/RtmpreVX5T/remotes9b77d7d9a43/estadisticaun-UnalData-5fdfb68e9e876725599041db37cc6b635caaa20e/DESCRIPTION'
+─  preparing 'UnalData':
+✔  checking DESCRIPTION meta-information ...
+─  checking for LF line-endings in source and make files and shell scripts
+─  checking for empty or unneeded directories
+─  building 'UnalData_0.0.0.9000.tar.gz'
+
+Installing package into '/home/jeisonalarcon/R/x86_64-pc-linux-gnu-library/4.2'
+(as 'lib' is unspecified)
+ERROR: failed to lock directory '/home/jeisonalarcon/R/x86_64-pc-linux-gnu-library/4.2' for modifying
+Try removing '/home/jeisonalarcon/R/x86_64-pc-linux-gnu-library/4.2/00LOCK-UnalData'
+Warning message:
+In i.p(...) :
+  installation of package '/tmp/RtmpreVX5T/file9b748bfe18e/UnalData_0.0.0.9000.tar.gz' had non-zero exit status
+```
+
+:large_orange_diamond: Tal como lo indica el error es remover la carpeta de `UnalData`, creada temporalmente en una ejecución fallida, usualmente la encontrará en una ruta similar a `/home/jeisonalarcon/R/x86_64-pc-linux-gnu-library/4.2/` (*igualmente el error arroja la ruta que aplica en su caso, no borre solo ese archivo sino TODA la carpeta que lo contiene*) :open_file_folder:.
+
+Finalmente ejecutaremos el comando de instalación, obteniendo el siguiente mensaje que indica que se realizó la descarga de forma correcta :heavy_check_mark:.
+
+```
+sudo su - -c "R -e \"remotes::install_github('estadisticaun/UnalData", auth_token = "YOUR_ACCESS_TOKEN')\""
+
+
+Installing package into '/home/jeisonalarcon/R/x86_64-pc-linux-gnu-library/4.2'
+(as 'lib' is unspecified)
+* installing *source* package 'UnalData' ...
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (UnalData)
 ```
